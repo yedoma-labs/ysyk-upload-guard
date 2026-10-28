@@ -1,6 +1,6 @@
 {
 	"name": "@yedoma-labs/ysyk-upload-guard",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Zero-dependency upload inspection: magic-byte file type detection, allowlists, size limits and safe file names",
 	"type": "module",
 	"main": "./dist/index.cjs",
