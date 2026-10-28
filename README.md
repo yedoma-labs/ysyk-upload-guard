@@ -10,8 +10,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-7-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **ысык** (*ysyk*) — Yakutian (Sakha) for "(noch zu bestätigen)"
-
 Zero-dependency upload inspection for JavaScript and TypeScript: magic-byte file type detection,
 allowlists, size limits and safe file names.
 
