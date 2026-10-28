@@ -123,6 +123,12 @@ describe("inspectUpload: allowlist", () => {
 		});
 	});
 
+	it("accepts an allowlist entry written as image/jpg for JPEG files", () => {
+		expect(
+			inspectUpload({ data: fileWith(JPEG_HEADER, 64), allow: ["image/jpg" as "image/jpeg"] }),
+		).toMatchObject({ ok: true, mimeType: "image/jpeg" });
+	});
+
 	it("rejects everything when the allowlist is empty", () => {
 		expect(inspectUpload({ data: png, allow: [] })).toMatchObject({
 			ok: false,

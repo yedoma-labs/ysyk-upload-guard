@@ -1,8 +1,22 @@
 # @yedoma-labs/ysyk-upload-guard
 
-Zero-dependency upload inspection for JavaScript and TypeScript. It identifies files by their
-magic bytes, enforces a type allowlist and a size limit, and turns client-supplied file names
-into safe ones.
+<picture>
+  <source media="(max-width: 640px)" srcset="https://raw.githubusercontent.com/yedoma-labs/assets/main/resized/banner-resized-mobile.png">
+  <img src="https://raw.githubusercontent.com/yedoma-labs/assets/main/resized/banner-resized.png" alt="Project Header">
+</picture>
+
+[![CI](https://github.com/yedoma-labs/ysyk-upload-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/yedoma-labs/ysyk-upload-guard/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@yedoma-labs/ysyk-upload-guard.svg)](https://www.npmjs.com/package/@yedoma-labs/ysyk-upload-guard)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7-blue.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **ысык** (*ysyk*) — Yakutian (Sakha) for "(noch zu bestätigen)"
+
+Zero-dependency upload inspection for JavaScript and TypeScript: magic-byte file type detection,
+allowlists, size limits and safe file names.
+
+It identifies files by their magic bytes, enforces a type allowlist and a size limit, and turns
+client-supplied file names into safe ones.
 
 Upload middleware such as Multer trusts the client's `mimetype` header and the file extension.
 Both can be forged. This library reads the file's leading bytes instead, and treats the declared
@@ -32,7 +46,7 @@ pnpm add @yedoma-labs/ysyk-upload-guard
 
 Requires Node.js 20 or newer, or another runtime with `Uint8Array`.
 
-## Usage
+## Quick start
 
 ```ts
 import { inspectUpload } from "@yedoma-labs/ysyk-upload-guard";
@@ -60,7 +74,7 @@ if (result.ok) {
 
 | Export | Description |
 | --- | --- |
-| `inspectUpload(options)` | Full check: empty, size, magic bytes, allowlist, safe name. Returns a result object and does not throw for bad input. |
+| `inspectUpload(options)` | Full check: empty, size, magic bytes, allowlist, safe name. Returns a result object for bad file input. Throws a `RangeError` when `maxBytes` is not a positive safe integer, because that is a programming error. |
 | `sniffFileType(bytes)` | Low-level detection. Returns `{ mimeType, extension }` or `undefined`. |
 | `sanitizeFileName(name)` | Sanitizes a name without any type check. |
 | `SUPPORTED_MIME_TYPES` | The list of detectable MIME types. |

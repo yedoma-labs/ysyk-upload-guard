@@ -84,7 +84,10 @@ export function inspectUpload(options: InspectUploadOptions): InspectUploadResul
 	if (detected === undefined) {
 		return fail("UNSUPPORTED_TYPE");
 	}
-	if (!options.allow.includes(detected.mimeType)) {
+	// Entries are normalized like the declared type, so a JavaScript caller that lists
+	// "image/jpg" still accepts JPEG files instead of rejecting them silently.
+	const allowed = options.allow.map(normalizeMimeType);
+	if (!allowed.includes(detected.mimeType)) {
 		return fail("NOT_IN_ALLOWLIST");
 	}
 
